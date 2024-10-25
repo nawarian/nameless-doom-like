@@ -1,27 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://bxkefvgktom6f"]
+[gd_scene load_steps=2 format=3 uid="uid://bxkefvgktom6f"]
 
-[ext_resource type="PackedScene" uid="uid://dsof2wnqu61ci" path="res://Scenes/HUD/hud.tscn" id="1_y380q"]
-
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_v11jl"]
-
-[sub_resource type="PlaneMesh" id="PlaneMesh_a6qck"]
-size = Vector2(12, 12)
+[ext_resource type="PackedScene" uid="uid://cq24t2g1t4i6l" path="res://Scenes/Gameplay/gameplay.tscn" id="1_a7woj"]
 
 [node name="Main" type="Node3D"]
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
-shadow_enabled = true
-
-[node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.02877, 4.89388)
-fov = 90.0
-
-[node name="CapsuleMesh" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.58455, 0)
-mesh = SubResource("CapsuleMesh_v11jl")
-
-[node name="Floor" type="MeshInstance3D" parent="."]
-mesh = SubResource("PlaneMesh_a6qck")
-
-[node name="HUD" parent="." instance=ExtResource("1_y380q")]
+[node name="Gameplay" parent="." instance=ExtResource("1_a7woj")]

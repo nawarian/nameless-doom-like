@@ -1,0 +1,39 @@
+[gd_scene load_steps=7 format=3 uid="uid://cq24t2g1t4i6l"]
+
+[ext_resource type="PackedScene" uid="uid://dsof2wnqu61ci" path="res://Scenes/HUD/hud.tscn" id="1_n8nob"]
+[ext_resource type="PackedScene" uid="uid://b27hfnympxxw6" path="res://Scenes/Player/player.tscn" id="2_kcsu0"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_wgx1r"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pxoc3"]
+albedo_color = Color(0.384098, 0.207865, 0.0823756, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_f2nxg"]
+material = SubResource("StandardMaterial3D_pxoc3")
+size = Vector2(22, 22)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_mv41c"]
+points = PackedVector3Array(11.1724, 0.174569, 11.1724, -11.1724, -0.174569, -11.1724, -11.1724, 0.174569, -11.1724, 11.1724, -0.174569, -11.1724, -11.1724, -0.174569, 11.1724, -11.1724, 0.174569, 11.1724, 11.1724, 0.174569, -11.1724, 11.1724, -0.174569, 11.1724)
+
+[node name="Gameplay" type="Node3D"]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866025, -0.433013, 0.25, 0.448267, -0.450911, 0.77184, -0.221489, 0.780499, 0.584606, 0, 14.8134, 15)
+shadow_enabled = true
+
+[node name="CapsuleMesh" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.58455, 0)
+mesh = SubResource("CapsuleMesh_wgx1r")
+
+[node name="HUD" parent="." instance=ExtResource("1_n8nob")]
+
+[node name="Player" parent="." instance=ExtResource("2_kcsu0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 2, 4)
+
+[node name="Floor" type="StaticBody3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Floor"]
+mesh = SubResource("PlaneMesh_f2nxg")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor"]
+shape = SubResource("ConvexPolygonShape3D_mv41c")
