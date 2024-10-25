@@ -1,4 +1,7 @@
-[gd_scene format=3 uid="uid://dsof2wnqu61ci"]
+[gd_scene load_steps=3 format=3 uid="uid://dsof2wnqu61ci"]
+
+[ext_resource type="Texture2D" uid="uid://c61mkaeduc3xb" path="res://Scenes/HUD/assets/kenney_crosshair-pack/PNG/White Retina/crosshair007.png" id="1_21leo"]
+[ext_resource type="Script" path="res://Scenes/HUD/hud.gd" id="1_87mb3"]
 
 [node name="HUD" type="Control"]
 layout_mode = 3
@@ -7,3 +10,22 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_87mb3")
+metadata/something_on_scope = false
+
+[node name="CrossHair" type="TextureRect" parent="."]
+modulate = Color(1, 1, 1, 0.486275)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -31.0
+offset_top = -32.0
+offset_right = 97.0
+offset_bottom = 96.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.45, 0.45)
+texture = ExtResource("1_21leo")

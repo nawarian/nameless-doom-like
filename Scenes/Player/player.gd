@@ -1,5 +1,7 @@
 extends CharacterBody3D
 
+signal raycast_collides(is_colliding)
+
 const SPEED = 10.0
 
 var sensitivity: float = 0.005
@@ -9,6 +11,9 @@ var min_vertical_angle: float = -90.0
 
 var yaw: float = 0.0
 var pitch: float = 0.0
+
+@onready var ray: RayCast3D = $RayCast3D
+@onready var something_on_scope: bool = ray.is_colliding()
 
 func _ready():
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
@@ -21,6 +26,14 @@ func _input(event):
 		pitch = clamp(pitch, deg_to_rad(min_vertical_angle), deg_to_rad(max_vertical_angle))
 		rotation.x = pitch
 		rotation.y = yaw
+
+func _process(delta):
+	if ray.is_colliding() and not something_on_scope:
+		something_on_scope = true
+		emit_signal("raycast_collides", true)
+	elif not ray.is_colliding() and something_on_scope:
+		something_on_scope = false
+		emit_signal("raycast_collides", false)
 
 func _physics_process(delta):
 	# Add the gravity.

@@ -19,3 +19,9 @@ mesh = SubResource("CapsuleMesh_oiu3p")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("ConvexPolygonShape3D_sqsqn")
+
+[node name="RayCast3D" type="RayCast3D" parent="."]
+transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, 0, 0.441807, -0.406187)
+target_position = Vector3(0, 0, -3)
+debug_shape_custom_color = Color(0.787542, 2.69532e-06, 2.88785e-07, 1)
+debug_shape_thickness = 1
